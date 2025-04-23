@@ -1,26 +1,23 @@
-import * as fs from 'fs';
-import * as path from 'path';
+// https://www.codingame.com/training/easy/island-escape
 
-// Dynamically generate input file name based on this file's name
-const currentFileName = path.basename(__filename);
-const baseFileName = currentFileName.replace('.ts', '');
-const inputFileName = `${baseFileName}.txt`;
+import { setupInput } from './inputUtils';
+const readline: () => string = setupInput(__filename);
 
-// Read input from the dynamically named file
-const input: string = fs.readFileSync(inputFileName, 'utf8');
-const lines: string[] = input.trim().split('\n');
+/**
+ * Auto-generated code below aims at helping you parse
+ * the standard input according to the problem statement.
+ **/
 
-let lineIndex: number = 0;
-const N: number = parseInt(lines[lineIndex++]);
-let map: number[][] = [];
-let breadcrumb: boolean[][] = Array.from({length: N}, () => Array(N).fill(false));
+const N: number = parseInt(readline());
+let map: number[][] = []
+let breadcrumb: boolean[][] = Array.from({length:N}, () => Array(N).fill(false))
 
-// Parse the map
 for (let i = 0; i < N; i++) {
-    const inputs: string[] = lines[lineIndex++].split(' ');
-    map[i] = [];
+    var inputs: string[] = readline().split(' ');
+    map[i] = []
     for (let j = 0; j < N; j++) {
-        map[i][j] = parseInt(inputs[j]);
+        const elevation: number = parseInt(inputs[j]);
+        map[i][j] = elevation
     }
 }
 
